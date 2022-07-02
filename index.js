@@ -28,6 +28,12 @@ client.on("messageCreate", (message) => {
     }
 })
 
+client.on("messageCreate", (message) => {
+    if (message.content == "!members"){
+        message.reply("The members of Group 4 are Christopher Beck, Nicholas Josten, and Petero Kwizera")
+    }
+})
+
 client.on("guildMemberAdd", (member) => {
     member.guild.channels.cache.get(welcomeID).send(`<@${member.id}> Welcome to the test server for Group 4!`)
 })
