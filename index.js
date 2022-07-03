@@ -39,3 +39,24 @@ client.on("guildMemberAdd", (member) => {
 })
 
 client.login(process.env.TOKEN)
+
+client.on('messageCreate', messageCreate => {
+    if(!messageCreate.content.startsWith(prefix) || messageCreate.author.bot) return;
+
+    const args = messageCreate.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if(command === 'ping') {
+        messageCreate.channel.send('pong!');
+    } 
+    else if (command === 'getClassTime') {
+        //messageCreate.reply("BINGO");
+        if (messageCreate.member.roles.cache.has('992858522897358891')) {
+            messageCreate.reply('You should not be seeing this');
+        }
+        else {
+            messageCreate.reply('You do not have the required permissions');
+        }
+
+    }
+});
