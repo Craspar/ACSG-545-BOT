@@ -38,4 +38,11 @@ client.on("guildMemberAdd", (member) => {
     member.guild.channels.cache.get(welcomeID).send(`<@${member.id}> Welcome to the test server for Group 4!`)
 })
 
+client.on('message', message => {
+    if (message.content == '!ping')
+    {
+        message.reply('pong!');
+    }
+})
+
 client.login(process.env.TOKEN)
