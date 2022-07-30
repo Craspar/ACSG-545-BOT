@@ -18,8 +18,8 @@ client.on("ready", () => {
     var testChannel = client.channels.cache.find(channel => channel.id === '1002978821399658617');
 
     setInterval(() => {
-        testChannel.send("This message was sent on a timer!");
-    //}, 5000);
+        testChannel.send("There is a Group Meeting Tonight!");
+    }, 604800000);
 
 })
 
