@@ -16,6 +16,10 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
 
     var testChannel = client.channels.find(channel => channel.id === '1002978821399658617');
+
+    setInterval(() => {
+        testChannel.send("This message was sent on a timer!");
+    }, 5000);
 });
 
 client.on("messageCreate", (message) => {
