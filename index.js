@@ -4,8 +4,6 @@ const welcomeID = "992858522897358891"
 
 require("dotenv").config()
 
-var count = 0;
-
 const client = new Discord.Client({
     intents: [
         "GUILDS",
@@ -19,10 +17,16 @@ client.on("ready", () => {
 
     var testChannel = client.channels.cache.find(channel => channel.id === '1002978821399658617');
 
+    setInterval(() => {
+        testChannel.send("There is a Group Meeting Tonight!");
+    }, 604800000);
 
     setInterval(() => {
-        testChannel.send("The Number is:" + count);
-        count++;
+        testChannel.send("An hour has gone by");
+    }, 86400000);
+
+    setInterval(() => {
+        testChannel.send("This message sends every 10 seconds");
     }, 10000);
 
 })
