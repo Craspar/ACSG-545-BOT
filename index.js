@@ -19,7 +19,7 @@ client.on("ready", () => {
 
     setInterval(() => {
         testChannel.send("This message was sent on a timer!");
-    }, 5000);
+    //}, 5000);
 
 })
 
