@@ -26,8 +26,8 @@ client.on("ready", () => {
     }, 86400000);
 
     setInterval(() => {
-        testChannel.send("This message sends every 10 seconds");
-    }, 10000);
+        testChannel.send("This message sends every 15 minutes");
+    }, 1800000);
 
 })
 
