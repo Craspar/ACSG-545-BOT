@@ -61,8 +61,8 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content == '!rules')
     {
-        
-        message.reply('1. No inappropriate images, links, or names in text channels. \n 2. No racist, homophobic, xenophobic, or otherwise offensive/divisive comments will be tolerated. \n 3. Any attempts to circumvent or find loopholes in these rules will result in further consequences.');
+
+        message.reply('1. No inappropriate images, links, or names in text channels.\n2. No racist, homophobic, xenophobic, or otherwise offensive/divisive comments will be tolerated.\n3. Any attempts to circumvent or find loopholes in these rules will result in further consequences.');
 
     }
 });
