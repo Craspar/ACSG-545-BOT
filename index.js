@@ -84,7 +84,7 @@ function blackListSearch(message) {
 client.on('message', message => {
     var messageContent = message.content.split(' ');
 
-    if (blackListSearch(message) === true && messageContent[0] != '!decreaseBlackList')
+    if (blackListSearch(message) === true && messageContent[0] != '!decreaseBlackList' && messageContent[0] != '!expandBlackList')
     {
         message.reply('Your message contained a word or phrase that is deemed impropper by server rules.  If you would like a list of server rules type !rules.').then(message => 
             setTimeout(() => message.delete(), 300000));
@@ -95,26 +95,22 @@ client.on('message', message => {
 client.on('message', message => {
     var messageContent = message.content.split(' ');
 
-    if (messageContent[0] == '!expandBlackList' && messageContent.length > 1)
+    if (messageContent[0] == '!expandBlackList' && messageContent.length > 1 && blackListSearch(message) == false)
     {
         blackList.push(messageContent[1]);
         blackList.length += 1;
         blackList.length -= 1;
-        console.log(blackList.toString());
-        console.log(blackList.length);
     }
 })
 
 client.on('message', message => {
     var messageContent = message.content.split(' ');
 
-    if (messageContent[0] == '!decreaseBlackList' && messageContent.length > 1)
+    if (messageContent[0] == '!decreaseBlackList' && messageContent.length > 1 && blackListSearch(message) == true)
     {
-        blackList.splice(blackList.indexOf(messageContent[1], 1));
+        blackList.splice(blackList.indexOf(messageContent[1]), 1);
         blackList.length += 1;
         blackList.length -= 1;
-        console.log(blackList.toString());
-        console.log(blackList.length);
     }
 })
 
