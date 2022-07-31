@@ -58,6 +58,14 @@ client.on('message', message => {
     }
 });
 
+client.on('message', message => {
+    if (message.content == '!rules')
+    {
+        message.reply('1. No inappropriate language, images, links, or names in text channels.');
+        message.reply('2. No racist, homophobic, xenophobic, or otherwise offensive/devisiveness will be tolerated.')
+        message.reply('3. Any attempts to circumvent or find loopholes in these rules will result in further consequences.')
+    }
+});
 
 var id;
 
