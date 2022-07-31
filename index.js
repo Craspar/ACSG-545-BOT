@@ -72,20 +72,37 @@ function blackListSearch(message) {
     }
     return false;
 }
+
 client.on('message', message => {
-    if (blackListSearch(message) === true)
+    var messageContent = message.content.split(' ');
+
+    if (blackListSearch(message) === true && messageContent[0] != '!decreaseBlackList')
     {
         message.reply('Your message contained a word or phrase that is deemed impropper by server rules.  If you would like a list of server rules type !rules.').then(message => 
             setTimeout(() => message.delete(), 300000));
         message.fetch(id).then(message => message.delete());
     }
 })
+
 client.on('message', message => {
     var messageContent = message.content.split(' ');
 
     if (messageContent[0] == '!expandBlackList' && messageContent.length > 1)
     {
         blackList.push(messageContent[1]);
+        blackList.length += 1;
+        blackList.length -= 1;
+        console.log(blackList.toString());
+        console.log(blackList.length);
+    }
+})
+
+client.on('message', message => {
+    var messageContent = message.content.split(' ');
+
+    if (messageContent[0] == '!decreaseBlackList' && messageContent.length > 1)
+    {
+        blackList.splice(blackList.indexOf(messageContent[1], 1));
         blackList.length += 1;
         blackList.length -= 1;
         console.log(blackList.toString());
