@@ -2,6 +2,10 @@ const Discord = require("discord.js")
 
 const welcomeID = "992858522897358891"
 
+var blackList = ['test1', 'test2', 'test3'];
+
+var i;
+
 require("dotenv").config()
 
 const client = new Discord.Client({
@@ -53,5 +57,40 @@ client.on('message', message => {
         message.reply('pong!');
     }
 });
+
+
+var id;
+
+var blackList = ['test1', 'test2', 'test3'];
+function blackListSearch(message) {
+    for (var i = 0; i < blackList.length; i++)
+    {
+        if (message.content.includes(blackList[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+client.on('message', message => {
+    if (blackListSearch(message) === true)
+    {
+        message.reply('Your message contained a word or phrase that is deemed impropper by server rules.  If you would like a list of server rules type !rules.').then(message => 
+            setTimeout(() => message.delete(), 300000));
+        message.fetch(id).then(message => message.delete());
+    }
+})
+client.on('message', message => {
+    var messageContent = message.content.split(' ');
+
+    if (messageContent[0] == '!expandBlackList' && messageContent.length > 1)
+    {
+        blackList.push(messageContent[1]);
+        blackList.length += 1;
+        blackList.length -= 1;
+        console.log(blackList.toString());
+        console.log(blackList.length);
+    }
+})
 
 client.login(process.env.TOKEN)
