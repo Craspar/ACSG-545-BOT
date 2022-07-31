@@ -70,7 +70,7 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content == '!help')
     {
-        message.reply('Commands List:\n!class => Returns the corresponding class for this server.\n!prof => Returns information regarding the class instructor.\n!ping performs a basic ping test, returning "pong" if the bot is online.\n!rules returns a list of current server rules.\n!help returns this list of coommands.');
+        message.reply('Commands List:\n!class => Returns the corresponding class for this server.\n!prof => Returns information regarding the class instructor.\n!ping => performs a basic ping test, returning "pong" if the bot is online.\n!rules => returns a list of current server rules.\n!help => returns this list of coommands.');
     }
 });
 
